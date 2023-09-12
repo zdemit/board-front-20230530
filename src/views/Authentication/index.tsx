@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, KeyboardEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { useDaumPostcodePopup, Address } from 'react-daum-postcode';
@@ -66,6 +66,11 @@ export default function Authentication() {
     }
 
     //          event handler          //
+    // description: 비밀번호 인풋 키다운 이벤트 //
+    const onPasswordKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key !== 'Enter') return;
+      onSignInButtonClickHandler();
+    }
     // description: 비밀번호 타입 변경 버튼 클릭 이벤트 //
     const onPasswordIconClickHandler = () => {
       setShowPassword(!showPassword);
@@ -97,7 +102,7 @@ export default function Authentication() {
             <div className='auth-card-top-text'>로그인</div>
           </div>
           <div className='auth-card-top-input-container'>
-            <InputBox label='이메일 주소' type='text' placeholder='이메일 주소를 입력해 주세요.' error={error} value={email} setValue={setEmail} />
+            <InputBox label='이메일 주소' type='text' placeholder='이메일 주소를 입력해 주세요.' error={error} value={email} setValue={setEmail} keyDownHandler={onPasswordKeyDownHandler} />
             <InputBox label='비밀번호' type={showPassword ? 'text' : 'password'} placeholder='비밀번호를 입력해 주세요.' icon={showPassword ? INPUT_ICON.ON : INPUT_ICON.OFF} buttonHandler={onPasswordIconClickHandler} error={error} value={password} setValue={setPassword} />
           </div>
         </div>

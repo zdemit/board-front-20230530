@@ -8,7 +8,7 @@ import ResponseDto from 'src/interfaces/response/response.dto';
 import { GetPopularListResponseDto, GetRelationListResponseDto } from 'src/interfaces/response/search';
 import { GetLoginUserResponseDto, GetUserResponseDto, PatchNicknameResponseDto, PatchProfileImageResponseDto } from 'src/interfaces/response/user';
 
-const API_DOMAIN = 'http://54.180.202.32:4040/api/v1';
+const API_DOMAIN = 'http://localhost:4040/api/v1';
 
 const SIGN_UP_URL = () => `${API_DOMAIN}/auth/sign-up`;
 const SIGN_IN_URL = () => `${API_DOMAIN}/auth/sign-in`;
